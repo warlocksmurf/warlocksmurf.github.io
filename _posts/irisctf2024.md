@@ -1,6 +1,6 @@
 ---
 title: IrisCTF 2024 - Writeups
-date: 2023-10-28 12:00:00
+date: 2024-01-08 12:00:00
 categories: [ctf]
 tags: [forensics,networking,osint,iris]
 ---
