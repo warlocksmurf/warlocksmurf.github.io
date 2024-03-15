@@ -12,17 +12,17 @@ Flag: `irisctf{mkvm3rg3_my_b3l0v3d}`
 
 We are given a weird .mkv video file and reading the scenario, we have to probably analyze the subtitles. So doing my research online, we can use [mkvinfo](https://linux.die.net/man/1/mkvinfo) to find multiple tracks and subtitles embedded within the video.
 
-![media1](/assets/posts/irisctf2024/media1)
+![media1](/assets/posts/irisctf2024/media1.png)
 
 Analyzing the metadata, we notice 1 of the font files called FakeFont.ttf (kinda suspicious). So we extract this font file and also the subtitle of the video. Inside the subtitle file, several chinese letters can be found.
 
-![media2](/assets/posts/irisctf2024/media2)
+![media2](/assets/posts/irisctf2024/media2.png)
 
-![media3](/assets/posts/irisctf2024/media3)
+![media3](/assets/posts/irisctf2024/media3.png)
 
 So we just have to combine both files together using [fontdrop.io](https://fontdrop.info/#/?darkmode=true).
 
-![media4](/assets/posts/irisctf2024/media4)
+![media4](/assets/posts/irisctf2024/media4.png)
 
 ## Task 2: skat's SD card [Forensics]
 Question: "Do I love being manager? I love my kids. I love real estate. I love ceramics. I love chocolate. I love computers. I love trains."
@@ -31,11 +31,11 @@ Flag: `irisctf{0h_cr4p_ive_left_my_k3ys_out_4nd_ab0ut}`
 
 We are given a Linux file system, so I opened up Autopsy and started my investigation. The first thing to check is the User's directory for clues, and analyzing the bash history of the user skat, he probably downloaded a repository from GitHub called `skats-interesting-things.git`. 
 
-![skat1](/assets/posts/irisctf2024/skat1)
+![skat1](/assets/posts/irisctf2024/skat1.png)
 
 So I attempted to clone the repository myself but it requires a secret key. At this point I was stuck and could not solve it before the CTF ended, but I asked several members on Discord and they told me we can actually extract the public key from the hidden files. Going through the directories, we can find another hidden directory called .ssh and within it the RSA keys.
 
-![skat2](/assets/posts/irisctf2024/skat2)
+![skat2](/assets/posts/irisctf2024/skat2.png)
 
 Since its a private key, we can brute force it using John the Ripper to obtain the passphrase.
 ```
@@ -45,11 +45,11 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
 
 The password is `password` (that's not very secure skat!). Now we can start cloning the suspicious files from the repository. Before that, we have to also copy both the private key and public key to my `~/.ssh` directory to be used for authorisation. After cloning the repository, we can find multiple text files, README, and a hidden .git directory.
 
-![skat3](/assets/posts/irisctf2024/skat3)
+![skat3](/assets/posts/irisctf2024/skat3.png)
 
 @seal on Discord mentioned that we can use a tool called [packfile_reader](https://github.com/robisonsantos/packfile_reader) to extract and parse .git data to some text files. Navigating to `.git/objects/pack`, we can utilize the tool and just grep the flag from the parsed text files.
 
-![skat4](/assets/posts/irisctf2024/skat3)
+![skat4](/assets/posts/irisctf2024/skat3.png)
 
 ## Task 1: Where's skat? [Networks]
 Question: While traveling over the holidays, I was doing some casual wardriving (as I often do). Can you use my capture to find where I went? Note: the flag is irisctf{the_location}, where the_location is the full name of my destination location, not the street address. For example, irisctf{Washington_Monument}. Note that the flag is not case sensitive.
@@ -58,11 +58,11 @@ Flag: `irisctf{los_angeles_union_station}`
 
 We are given a pcap file to investigate where teh user might be. Looking around the pcap file, I noticed the user's device communicating with nearby routers and it seems to lead to the same place everytime (according to the SSID).
 
-![where1](/assets/posts/irisctf2024/where1)
+![where1](/assets/posts/irisctf2024/where1.png)
 
 From what I understand, it seems that skat is being in some station as it shows multiple Metro SSIDs and by checking LAUS with Morlin together (I thought Morlin was a hotel), we can get the location.
 
-![where2](/assets/posts/irisctf2024/where2)
+![where2](/assets/posts/irisctf2024/where2.png)
 
 ## Task 2: skat's Network History [Networks]
 Question: "I love cats." Note: this challenge is a continuation to Forensics/skat's SD Card. You are dealing with the same scenario. skats-sd-card.tar.gz is the same file from that challenge (SHA-1: 4cd743d125b5d27c1b284f89e299422af1c37ffc).
@@ -101,15 +101,15 @@ method=auto
 
 With the PSK, we can decrypt the packets using Wireshark by navigating to `Preferences > Protocols > IEEE 802.11 > Edit` to add the PSK as the wpa-pwd.
 
-![history1](/assets/posts/irisctf2024/history1)
+![history1](/assets/posts/irisctf2024/history1.png)
 
 We are also given some SSL keys in a file called sslkeyfile, so we can utilize them by navigating to `Protocols > TLS > (Pre)-Master-Secret log filename` and placing them to the pcap that it allows us decrypt certain packets.
 
-![history2](/assets/posts/irisctf2024/history2)
+![history2](/assets/posts/irisctf2024/history2.png)
 
 After decrypting, we can find several HTTP/2 packets (first time hearing about this) when analyzing the traffic. A pastebin entry can be found in the traffic and the data response for it has the flag.
 
-![history3](/assets/posts/irisctf2024/history3)
+![history3](/assets/posts/irisctf2024/history3.png)
 
 ## Task 1: Czech Where? [OSINT]
 Question: Iris visited this cool shop a while back, but forgot where it was! What street is it on?
@@ -118,13 +118,13 @@ Flag: `irisctf{zlata_ulicka_u_daliborky}`
 
 We are given an image of a supposedly Czech location. Just perform a Google reverse search to at least identify the location's name.
 
-![czech1](/assets/posts/irisctf2024/czech1)
+![czech1](/assets/posts/irisctf2024/czech1.png)
 
 The location's name can be found in a Japanese blog. Looking into Google Maps for Czech Golden Lane, the street name can be obtained.
 
-![czech2](/assets/posts/irisctf2024/czech2)
+![czech2](/assets/posts/irisctf2024/czech2.png)
 
-![czech3](/assets/posts/irisctf2024/czech3)
+![czech3](/assets/posts/irisctf2024/czech3.png)
 
 ## Task 2: Away on Vacation [OSINT]
 Question: Iris and her assistant are away on vacation. She left an audio message explaining how to get in touch with her assistant. See what you can learn about the assistant.
@@ -140,13 +140,13 @@ Hello, you’ve reached Iris Stein, head of the HR department! I’m currently a
 
 Funny thing is I actually went to email Michel since the admin told me its allowed and I actually got an automatic reply from Michel stating that he is also on vacation now and I can reach out to him via social media.
 
-![vac1](/assets/posts/irisctf2024/vac1)
+![vac1](/assets/posts/irisctf2024/vac1.png)
 
 So I tried finding him on Instagram and one of the post gave the flag.
 
-![vac2](/assets/posts/irisctf2024/vac2)
+![vac2](/assets/posts/irisctf2024/vac2.png)
 
-![vac3](/assets/posts/irisctf2024/vac3)
+![vac3](/assets/posts/irisctf2024/vac3.png)
 
 ## Task 3: Personal Breach [OSINT]
 Question: Security questions can be solved by reconnaissance. The weakest link in security could be the people around you.
@@ -161,31 +161,31 @@ We are tasked to look for information about a person called Iris Stein:
 ```
 Since we know Iris is associated with Michel in some way, we can find her in Michel's Instagram followers list. Going through all Iris Stein's posts, we find that even her mom, Elaina Stein, has a social media account.
 
-![iris1](/assets/posts/irisctf2024/iris1)
+![iris1](/assets/posts/irisctf2024/iris1.png)
 
-![iris2](/assets/posts/irisctf2024/iris2)
+![iris2](/assets/posts/irisctf2024/iris2.png)
 
 Looking everywhere for her mom, the only place I got information was Facebook (based and chad).
 
-![iris3](/assets/posts/irisctf2024/iris3)
+![iris3](/assets/posts/irisctf2024/iris3.png)
 
 Going through Eleina's posts, we find a life event post on her daughter's birth. There we can find Iris Stein's age to be `27 years old`.
 
-![iris4](/assets/posts/irisctf2024/iris4)
+![iris4](/assets/posts/irisctf2024/iris4.png)
 
 Just Google reverse search the hospital picture and the name of the hospital can be found. The name of the specific hospital was `Lenox Hill Hospital`.
 
-![iris5](/assets/posts/irisctf2024/iris5)
+![iris5](/assets/posts/irisctf2024/iris5.png)
 
 Our last task was to find her company. These work-related stuff should probably be on Linkedin. Remember to type in HR for easier search since we know she is the HR department from the voicemail from previous tasks.
 
-![iris6](/assets/posts/irisctf2024/iris6)
+![iris6](/assets/posts/irisctf2024/iris6.png)
 
-![iris7](/assets/posts/irisctf2024/iris7)
+![iris7](/assets/posts/irisctf2024/iris7.png)
 
 Answering all the questions, the flag is given.
 
-![iris8](/assets/posts/irisctf2024/iris7)
+![iris8](/assets/posts/irisctf2024/iris8.png)
 
 ## Task 4: A Harsh Reality of Passwords [OSINT]
 Question: Recently, Iris’s company had a breach. Her password’s hash has been exposed. This challenge is focused on understanding Iris as a person. Hash: $2b$04$DkQOnBXHNLw2cnsmSEdM0uyN3NHLUb9I5IIUF3akpLwoy7dlhgyEC
@@ -196,15 +196,15 @@ I was not able to solve this question before the CTF ended, however, I did attem
 
 We can see that she calls her Mothers birthday a 'very important date' so thats one of the details we can extract for our dictionary.
 
-![hash1](/assets/posts/irisctf2024/hash1)
+![hash1](/assets/posts/irisctf2024/hash1.png)
 
 Here, she mentions her love for Tiramisu, that's going on the dictionary.
 
-![hash2](/assets/posts/irisctf2024/hash2)
+![hash2](/assets/posts/irisctf2024/hash2.png)
 
 In this post she talks about an important place in Italy, Portofino.
 
-![hash3](/assets/posts/irisctf2024/hash3)
+![hash3](/assets/posts/irisctf2024/hash3.png)
 
 A dictionary file can then be created with the important words and her mother's birthdate (the admins gave us a hint on this).
 ```
@@ -234,4 +234,4 @@ Using hashcat, we can crack the hash and obtain the password.
 hashcat -m 3200 hash output.txt
 ```
 
-![hash4](/assets/posts/irisctf2024/hash4)
+![hash4](/assets/posts/irisctf2024/hash4.png)
