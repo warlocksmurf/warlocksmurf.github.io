@@ -5,7 +5,8 @@ categories: [ctf]
 tags: [forensics,networking,osint,iris]
 ---
 
-## Task 1: Not Just Media [Forensics]
+# Forensics
+## Task 1: Not Just Media
 Question: I downloaded a video from the internet, but I think I got the wrong subtitles. Note: The flag is all lowercase.
 
 Flag: `irisctf{mkvm3rg3_my_b3l0v3d}`
@@ -24,7 +25,7 @@ So we just have to combine both files together using [fontdrop.io](https://fontd
 
 ![media4](/assets/posts/irisctf2024/media4.png)
 
-## Task 2: skat's SD card [Forensics]
+## Task 2: skat's SD card
 Question: "Do I love being manager? I love my kids. I love real estate. I love ceramics. I love chocolate. I love computers. I love trains."
 
 Flag: `irisctf{0h_cr4p_ive_left_my_k3ys_out_4nd_ab0ut}`
@@ -51,7 +52,8 @@ The password is `password` (that's not very secure skat!). Now we can start clon
 
 ![skat4](/assets/posts/irisctf2024/skat4.png)
 
-## Task 1: Where's skat? [Networks]
+# Networks
+## Task 1: Where's skat?
 Question: While traveling over the holidays, I was doing some casual wardriving (as I often do). Can you use my capture to find where I went? Note: the flag is irisctf{the_location}, where the_location is the full name of my destination location, not the street address. For example, irisctf{Washington_Monument}. Note that the flag is not case sensitive.
 
 Flag: `irisctf{los_angeles_union_station}`
@@ -64,7 +66,7 @@ From what I understand, it seems that skat is being in some station as it shows 
 
 ![where2](/assets/posts/irisctf2024/where2.png)
 
-## Task 2: skat's Network History [Networks]
+## Task 2: skat's Network History
 Question: "I love cats." Note: this challenge is a continuation to Forensics/skat's SD Card. You are dealing with the same scenario. skats-sd-card.tar.gz is the same file from that challenge (SHA-1: 4cd743d125b5d27c1b284f89e299422af1c37ffc).
 
 Flag: `irisctf{i_sp3nd_m0st_of_my_t1me_0n_th3_1nt3rnet_w4tch1ng_c4t_v1d30s}`
@@ -111,7 +113,8 @@ After decrypting, we can find several HTTP/2 packets (first time hearing about t
 
 ![history3](/assets/posts/irisctf2024/history3.png)
 
-## Task 1: Czech Where? [OSINT]
+# OSINT
+## Task 1: Czech Where?
 Question: Iris visited this cool shop a while back, but forgot where it was! What street is it on?
 
 Flag: `irisctf{zlata_ulicka_u_daliborky}`
@@ -126,7 +129,7 @@ The location's name can be found in a Japanese blog. Looking into Google Maps fo
 
 ![czech3](/assets/posts/irisctf2024/czech3.png)
 
-## Task 2: Away on Vacation [OSINT]
+## Task 2: Away on Vacation
 Question: Iris and her assistant are away on vacation. She left an audio message explaining how to get in touch with her assistant. See what you can learn about the assistant.
 
 Flag: `irisctf{pub1ic_4cc0unt5_4r3_51tt1ng_duck5}`
@@ -148,7 +151,7 @@ So I tried finding him on Instagram and one of the post gave the flag.
 
 ![vac3](/assets/posts/irisctf2024/vac3.png)
 
-## Task 3: Personal Breach [OSINT]
+## Task 3: Personal Breach
 Question: Security questions can be solved by reconnaissance. The weakest link in security could be the people around you.
 
 Flag: `irisctf{s0c1al_m3d1a_1s_an_1nf3cti0n}`
@@ -185,7 +188,7 @@ Answering all the questions, the flag is given.
 
 ![iris8](/assets/posts/irisctf2024/iris8.png)
 
-## Task 4: A Harsh Reality of Passwords [OSINT]
+## Task 4: A Harsh Reality of Passwords
 Question: Recently, Iris’s company had a breach. Her password’s hash has been exposed. This challenge is focused on understanding Iris as a person. Hash: $2b$04$DkQOnBXHNLw2cnsmSEdM0uyN3NHLUb9I5IIUF3akpLwoy7dlhgyEC
 
 Flag: `irisctf{PortofinoItalyTiramisu0481965}`
