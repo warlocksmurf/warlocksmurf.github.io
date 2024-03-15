@@ -49,7 +49,7 @@ The password is `password` (that's not very secure skat!). Now we can start clon
 
 @seal on Discord mentioned that we can use a tool called [packfile_reader](https://github.com/robisonsantos/packfile_reader) to extract and parse .git data to some text files. Navigating to `.git/objects/pack`, we can utilize the tool and just grep the flag from the parsed text files.
 
-![skat4](/assets/posts/irisctf2024/skat3.png)
+![skat4](/assets/posts/irisctf2024/skat4.png)
 
 ## Task 1: Where's skat? [Networks]
 Question: While traveling over the holidays, I was doing some casual wardriving (as I often do). Can you use my capture to find where I went? Note: the flag is irisctf{the_location}, where the_location is the full name of my destination location, not the street address. For example, irisctf{Washington_Monument}. Note that the flag is not case sensitive.
