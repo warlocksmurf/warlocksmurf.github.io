@@ -135,16 +135,14 @@ Similarly, the CVE already explains which port is exploits.
 
 ![network6](/assets/posts/knightctf2024/network6.png)
 
-![network7](/assets/posts/knightctf2024/network7.png)
-
 ## Task 7: Hidden File
 Question: What's the flag of the hidden file?
 
 Flag: `KCTF{ExPloItiNg_S3RvEr_Is_fUN}`
 
-The flag can be found in the tcp stream previously, however, I could not decode it before the CTF ended. After asking other players on Discord, the true method is `Twin Hex` (that is too guessy).
+The flag can be found in the TCP stream 1532, however, I could not decode it before the CTF ended. After asking other players on Discord, the true method is `Twin Hex` (that is too guessy).
 
-![network8](/assets/posts/knightctf2024/network8.png)
+![network7](/assets/posts/knightctf2024/network8.png)
 
 ![network9](/assets/posts/knightctf2024/network9.png)
 
@@ -175,13 +173,9 @@ Analyzing the TCP stream again, we can find a php file being created and renamed
 ## Task 10: BackDoor Path
 Question: What is the full path of the backdoor in the server?
 
-Just take the path of the php file from Task 9.
-
 Flag: `KCTF{/var/www/html/app/assets/.621b4CkD0oR.php5}`
 
-Analyzing the TCP stream again, we can find a php file being created and renamed.
-
-![network13](/assets/posts/knightctf2024/network13.png)
+Just take the path of the php file obtained in Task 9.
 
 ## Task 11: Super Admin
 Question: What is the super admin password in the web application?
@@ -210,20 +204,18 @@ Question: What was the vulnerability on the edit task page & what parameter was 
 
 Flag: `KCTF{sqli_taskId}`
 
-By following HTTP traffic in the pcap, we can see a supposedly SQL injection attack going on. So we can check the vulnerable source code in `process_edit_task.php` and the parameter can be found.
+By following HTTP traffic in the pcap, we can see a supposedly SQL injection attack going on. So we can check the vulnerable source code in `process_edit_task.php` and the parameter can be found. So the vulnerablility is SQLi and the parameter is taskId.
 
 ![network18](/assets/posts/knightctf2024/network18.png)
 
 ![network19](/assets/posts/knightctf2024/network19.png)
-
-So the vulnerablility is SQLi and the parameter is taskId.
 
 ## Task 14: Famous Tool 2
 Question: What tool did the attacker use to identify the vulnerability of edit task page?  
 
 Flag: `KCTF{sqlmap/1.7.10#stable}`
 
-Check the http stream of the attack, the tool used was SQLMap 1.7.10#stable
+Check the http stream of the attack, the tool used was SQLMap.
 
 ![network20](/assets/posts/knightctf2024/network20.png)
 
@@ -232,8 +224,7 @@ Question: What is the super admin password in the web application?
 
 Flag: `KCTF{Y0u_aRe_InTeREsTiNg}`
 
-I had no clue how to solve this, so I asked other members on Discord and they mentioned a suspicious query in the previous SQL database.
-I guess it's another guessy challenge, I tried ROT47 and it worked out.
+I had no clue how to solve this, so I asked other members on Discord and they mentioned a suspicious query in the previous SQL database. In the backup.sql file there a table named `something`. It is another guessy challenge, I tried ROT47 and it worked out.
 
 ![network21](/assets/posts/knightctf2024/network21.png)
 
