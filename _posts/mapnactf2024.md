@@ -44,7 +44,7 @@ Flag: `MAPNA{F2FS_&_BFS_f1L3_5Ys73Ms_4rE_Nic3?!}`
 For this challenge, I could not solve it before the CTF ended, but I knew it had something to do with hex byte editing so I attempted it after the CTF. We are given a weird file with XXG extension, analyzing the its data, we can find several information like .goutputstream, gimp-image-metadata and some unknown (???) data. 
 GIMP strikes the hardest since most forensic challenges will require us to fix headers and obtain a GIMP-supported image,
 
-![image](https://github.com/warlocksmurf/ctftime-writeups/assets/121353711/5bcf8c94-d9d7-40e0-987a-ca5cefa2cf39)
+![xxd1](/assets/posts/mapnactf2024/xxd1.png)
 
 While analyzing the file, we can find a hidden image file embedded within it. It is at the very bottom so we have to first extract the specific part and edit some header values.
 
@@ -54,7 +54,7 @@ dd if=MAPNA.XXG bs=1 skip=33556480 count=3953 of=MAPNA.xcf
 
 Looking at this part, we can assume its:
 
-![xxd1](/assets/posts/mapnactf2024/xxd1.png)
+![xxd2](/assets/posts/mapnactf2024/xxd2.png)
 
 ```
 GIMP 
@@ -64,10 +64,10 @@ gimp-image-grid
 
 While reading on Gimp v014, we stumbled upon this website which mentions that its an XCF file. Since we know its an XCF file now, we can study its [headers](https://developer.gimp.org/core/standards/xcf/#header)
 
-![xxd2](/assets/posts/mapnactf2024/xxd2.png)
+![xxd3](/assets/posts/mapnactf2024/xxd3.png)
 
 We can start fixing the XCF header and after that, open it on GIMP to get the flag.
 
-![xxd3](/assets/posts/mapnactf2024/xxd3.png)
-
 ![xxd4](/assets/posts/mapnactf2024/xxd4.png)
+
+![xxd5](/assets/posts/mapnactf2024/xxd5.png)
