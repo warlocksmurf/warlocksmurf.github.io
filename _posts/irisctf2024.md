@@ -14,7 +14,7 @@ We are given a weird .mkv video file and reading the scenario, we have to probab
 
 ![media1](/assets/posts/irisctf2024/media1.png)
 
-Analyzing the metadata, we notice 1 of the font files called FakeFont.ttf (kinda suspicious). So we extract this font file and also the subtitle of the video. Inside the subtitle file, several chinese letters can be found.
+Analyzing the metadata, we notice the font file `FakeFont.ttf` being very suspicious. So we extract this font file and also the subtitle of the video. Inside the subtitle file, several chinese letters can be found.
 
 ![media2](/assets/posts/irisctf2024/media2.png)
 
