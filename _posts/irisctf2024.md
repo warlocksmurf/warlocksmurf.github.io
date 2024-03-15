@@ -159,13 +159,13 @@ We are tasked to look for information about a person called Iris Stein:
 2. What hospital was Iris born in?
 3. What company does Iris work for?
 ```
-Since we know Iris is associated with Michel in some way, we can find her in Michel's Instagram followers list. Going through all Iris Stein's posts, we find that even her mom, Elaina Stein, has a social media account.
+Since we know Iris is associated with Michel in some way, we can find her in Michel's Instagram followers list.
 
 ![iris1](/assets/posts/irisctf2024/iris1.png)
 
-![iris2](/assets/posts/irisctf2024/iris2.png)
+Going through all Iris Stein's posts, we find that even her mom, Elaina Stein, has a social media account. Looking everywhere for her mom, the only place I got information was Facebook (based and chad).
 
-Looking everywhere for her mom, the only place I got information was Facebook (based and chad).
+![iris2](/assets/posts/irisctf2024/iris2.png)
 
 ![iris3](/assets/posts/irisctf2024/iris3.png)
 
@@ -177,11 +177,9 @@ Just Google reverse search the hospital picture and the name of the hospital can
 
 ![iris5](/assets/posts/irisctf2024/iris5.png)
 
-Our last task was to find her company. These work-related stuff should probably be on Linkedin. Remember to type in HR for easier search since we know she is the HR department from the voicemail from previous tasks.
+Our last task was to find her company. These work-related stuff should probably be on Linkedin. Remember to type in HR for easier search since we know she is the HR department from the voicemail from previous tasks. The company she works for is named `Mountain Peek Hiring Agency`.
 
 ![iris6](/assets/posts/irisctf2024/iris6.png)
-
-![iris7](/assets/posts/irisctf2024/iris7.png)
 
 Answering all the questions, the flag is given.
 
