@@ -1,5 +1,5 @@
 ---
-title: rENTAS CTF 2024 (Qualifiers) - Writeups
+title: rENTAS CTF 2024 (Finals) - Writeups
 time: 2024-03-10 12:00:00
 categories: [ctf]
 tags: [forensics,networking,web,hardware,local]
