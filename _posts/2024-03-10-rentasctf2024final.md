@@ -5,7 +5,7 @@ categories: [ctf]
 tags: [forensics,networking,web,hardware,local]
 ---
 
-After the qualifying round, me and my teammates @Shen and @ren competing with 30 teams from different universities. In the end we did not win the competition and only managed to achieve 20th place out of 30 teams.. However, it was still an enjoyable experience as I get to meet the rest of the M53 and SherpaSec crew. I made so many new friends that day and I hope we can meet again in other CTFs.
+After the qualifying round, me and my teammates @Shen and @ren competing with 30 teams from different universities. In the end we did not win the competition and only managed to achieve 20th place out of 30 teams. However, it was still an enjoyable experience as I get to meet the rest of the M53 and SherpaSec crew. I made so many new friends that day and I hope we can meet again in other CTFs.
 
 ## Hidden zombie [Forensics]
 Flag: `RWSC{z0mb13_4tt4ck_1nc0m1ng}`
