@@ -440,7 +440,8 @@ After filtering, the TCP streams can be followed to read its content. At TCP str
 
 ### Task 4 
 Question: Grinch intercepted a list of nice and naughty children created by Santa. What was name of the second child on the nice list?
-<br>Answer: `Douglas Price`
+
+Answer: `Douglas Price`
 
 Similar to Task 3, just analyze the contents in TCP stream 28.
 
@@ -448,7 +449,8 @@ Similar to Task 3, just analyze the contents in TCP stream 28.
 
 ### Task 5
 Question: The Grinch obtained a print job instruction file intended for a printer used by an employee named Elfin. It appears that Santa and the North Pole management team have made the decision to dismiss Elfin. Could you please provide the word for word rationale behind the decision to terminate Elfin's employment?
-<br>Answer: `The addressed employee is confirmed to be working with grinch and team. According to Clause 69 , This calls for an immediate expulsion.`
+
+Answer: `The addressed employee is confirmed to be working with grinch and team. According to Clause 69 , This calls for an immediate expulsion.`
 
 Similar to Task 3 and 4, just analyze the contents in TCP stream 28.
 
