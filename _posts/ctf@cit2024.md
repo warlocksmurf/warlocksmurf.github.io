@@ -1,0 +1,302 @@
+---
+title: CTF@CIT 2024 - Writeups
+time: 2024-04-21 12:00:00
+categories: [ctf]
+tags: [forensics,steganography,nexus]
+image: /assets/posts/ctf@cit2024/icon.jpg
+---
+
+This is a writeup for all forensics and steganography challenges from CTF@CIT 2024. A quick and beginner friendly CTF to train my steganography skills further. Surprisingly managed to clear every challenge despite having 4 other CTFs running on the same day.
+
+## Drop me a chug jug! [Steganography]
+Question: What does Fortnite have to do with wav files? I dunno..
+
+Flag: `CIT{f0rtN1T3_ronn13691}`
+
+We are given a wav audio file to investigate. Analyzing its spectrogram, the flag can be obtained.
+
+![steg1](/assets/posts/ctf@cit2024/steg1.png)
+
+## I LOVE PRIME! [Steganography]
+Question: I LOVE PRIME SO MUCH META MOON IS SO GOOD ITS SO FULFILLING MMMMM TASTY!
+
+Flag: `CIT{meta_moon_prime_yummy}`
+
+We are given a jpg image of a fake flag to investigate. Analyzing its metadata, the flag can be obtained.
+
+![steg2](/assets/posts/ctf@cit2024/steg2.png)
+
+```
+└─$ exiftool meta-moon.jpg                                     
+ExifTool Version Number         : 12.76
+File Name                       : meta-moon.jpg
+Directory                       : .
+File Size                       : 24 kB
+File Modification Date/Time     : 2024:04:23 03:24:21-04:00
+File Access Date/Time           : 2024:04:23 03:26:47-04:00
+File Inode Change Date/Time     : 2024:04:23 03:24:21-04:00
+File Permissions                : -rwxrwxrwx
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Resolution Unit                 : inches
+X Resolution                    : 72
+Y Resolution                    : 72
+XMP Toolkit                     : Image::ExifTool 12.65
+Description                     : CIT{meta_moon_prime_yummy}
+Image Width                     : 1280
+Image Height                    : 720
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 1280x720
+Megapixels                      : 0.922
+```
+
+## The Art of the Beast [Steganography]
+Question: Embrace the dark, let the beast within rise, A journey of strength, beneath the moon's wise eyes. In silence and shadow, your true self you'll find, a beast of steg, untamed and unconfined. - Sensei
+
+Flag: `CIT{mist4_b34st}`
+
+We are given a png image to investigate. Analyzing its metadata, it seems that it was actually a jpg image instead.
+
+```
+└─$ exiftool the-art-of-the-beast.png 
+ExifTool Version Number         : 12.76
+File Name                       : the-art-of-the-beast.png
+Directory                       : .
+File Size                       : 540 kB
+File Modification Date/Time     : 2024:04:20 14:57:40-04:00
+File Access Date/Time           : 2024:04:23 03:27:54-04:00
+File Inode Change Date/Time     : 2024:04:20 14:57:40-04:00
+File Permissions                : -rwxrwxrwx
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Resolution Unit                 : None
+X Resolution                    : 1
+Y Resolution                    : 1
+Image Width                     : 828
+Image Height                    : 895
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:4:4 (1 1)
+Image Size                      : 828x895
+Megapixels                      : 0.741
+```
+
+Changing the file extension, a hidden data can be extracted within the image using steghide. Analyzing the data, the flag can be obtained.
+
+```
+└─$ steghide extract -sf the-art-of-the-beast.jpg 
+Enter passphrase: 
+wrote extracted data to "misterbeast".
+
+└─$ strings misterbeast                            
+/lib64/ld-linux-x86-64.so.2
+mgUa
+fgets
+stdin
+puts
+strcspn
+__libc_start_main
+__cxa_finalize
+printf
+strcmp
+libc.so.6
+GLIBC_2.2.5
+GLIBC_2.34
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+PTE1
+u+UH
+i love mister beast so much!
+i remember the video he made where he bought the world's largest mystery box.
+it still brings butterflies to my stomach. however, i don't remember what was inside of it.
+i just remember it being big..
+what was it?: 
+Tractor
+tractor
+you must love mister beast too!!! here's your flag: CIT{mist4_b34st}
+fake fan!
+;*3$"
+GCC: (Debian 13.2.0-2) 13.2.0
+.shstrtab
+.interp
+.note.gnu.property
+.note.gnu.build-id
+.note.ABI-tag
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rela.dyn
+.rela.plt
+.init
+.plt.got
+.text
+.fini
+.rodata
+.eh_frame_hdr
+.eh_frame
+.init_array
+.fini_array
+.dynamic
+.got.plt
+.data
+.bss
+.comment
+```
+
+## Intern [Steganography]
+Question: So we just hired an intern for our CTF. He wanted to make some challenges, but we told him to just make us a flyer to keep him occupied. Surely he didn't put a flag in here or else he's getting fired. Let us know..
+
+Flag: `CIT{f1r3_th1s_1nt3rn}`
+
+We are given a png image to investigate. Analyzing it on stegsolve, the flag can be obtained.
+
+![steg3](/assets/posts/ctf@cit2024/steg3.png)
+
+## Beep Boop [Forensics]
+Question: Find the flag.
+
+Flag: `CIT{q#@4&L*RuSgSj^a78ywa}`
+
+We are given a wav audio file to investigate. Listening to its audio, it seems to be morse code. Decoding the morse code, a secret value can be obtained.
+
+![steg4](/assets/posts/ctf@cit2024/steg4.png)
+
+The secret value seems to be encoded with Base32, which can be decoded to obtain the flag.
+
+![steg5](/assets/posts/ctf@cit2024/steg5.png)
+
+## Invoice [Forensics]
+Question: Our intern strikes again! We told him to create an invoice for one of our sponsors, but he redacted all of the sponsors information so we cannot tell who we are sending it to. Can you recover the sponsor's name for us?
+
+Flag: `CIT{Sir_Swaggy}`
+
+We are given a pdf file to investigate. It seems that certain text were redacted in the pdf. To bypass redacted blocks in pdf, we can use pdftohtml or pdftotext to locate the redacted text.
+
+![steg6](/assets/posts/ctf@cit2024/steg6.png)
+
+```
+└─$ pdftotext invoice.pdf 
+
+└─$ cat invoice.txt 
+INVOICE
+
+CTF@CIT
+300 Boston Post Rd
+West Haven, CT 06516
+Phone: (111) 439-5930
+
+INVOICE # 218
+DATE: 4/12/2024
+
+TO:
+Sir Swaggy
+1337 Information Security
+22 Beehive Drive
+Freeport, Maine 04032
+Phone: N/A
+
+SHIP TO:
+Sir Swaggy
+1337 Information Security
+22 Beehive Drive
+Freeport, Maine 04032
+Phone: N/A
+
+COMMENTS OR SPECIAL INSTRUCTIONS:
+Please pay at your earliest convenience. We accept Dogecoin, BTC, ETH, cash, or Steam cards. Thank you!
+...
+```
+
+## Sniff Sniff [Forensics]
+Question: Find the flag.
+
+Flag: `CIT{iJ5B9s#lAp6iBNi6JtQ8}`
+
+We are given a pcap file to investigate. Analyzing it, there seems to be TCP, HTTP, TLS and UDP packets being sent across the network.
+
+![steg7](/assets/posts/ctf@cit2024/steg7.png)
+
+Analyzing the HTTP packets first, there seems to be an encoded password in the user information page. The encoded password was indeed the flag.
+
+![steg8](/assets/posts/ctf@cit2024/steg8.png)
+
+```
+└─$ echo "Q0lUe2lKNUI5cyNsQXA2aUJOaTZKdFE4fQ==" | base64 -d    
+CIT{iJ5B9s#lAp6iBNi6JtQ8}
+```
+
+## Not a ZIP Bomb [Forensics]
+Question: We told the intern to hide the flag within this ZIP. Did he listen?
+
+Flag: `CIT{you_believed_in_me!}`
+
+We are given a zip file to investigate. Inside the zip file was numerous directories with a flag.txt file in them. For this challenge, I was unable to solve it on time but I saw someone giving one of the most simplest solution to solve this challenge. By filtering the fake flags using `uniq -u`, the real flag can be obtained easily.
+
+```
+└─$ strings flag.zip | grep -i cit | sort | uniq -u
+CIT{you_believed_in_me!}
+```
+
+## Secret Square [Forensics]
+Question: Find the flag.
+
+Flag: `CIT{SUP3R_S3CR3T_P1X3LS}`
+
+We are given a png image to investigate. However, it seems that the png image was just a block of pixels. Spending numerous hours on this challenge, a friend of mine gave an idea on reading the RGB values of each pixel in the block since we can clearly see some colors in it.
+
+![steg9](/assets/posts/ctf@cit2024/steg9.png)
+
+So I created a simple script to converts the RGB values of each pixel to their sum, then converts these sums into characters and prints them row by row in ASCII. Overall, a very guessy challenge.
+
+```
+from PIL import Image
+import numpy as np
+
+image_path = './secret_square.png'
+img = Image.open(image_path).convert('RGB')
+
+pixels = np.array(img)
+print(pixels.shape)
+
+sums = np.sum(pixels, axis=2)
+print(sums.shape)
+
+for row in sums:
+    print(''.join([chr(x) for x in row]))
+```
+
+```
+└─$ python rgb.py
+(19, 19, 3)
+(19, 19)
+This is a super sec
+ret and super secur
+e message! I hope y
+ou enjoyed finding 
+it. If you're a beg
+inner then it proba
+bly took some time,
+ but if you know wh
+at you're doing the
+n it probably took 
+around 30 seconds. 
+Anyways, here's the
+ flag: CIT{SUP3R_S3
+CR3T_P1X3LS} I'm go
+ing to add some mor
+e random text so th
+e image does not ha
+ve a bunch of black
+ pixels after it.
+```
