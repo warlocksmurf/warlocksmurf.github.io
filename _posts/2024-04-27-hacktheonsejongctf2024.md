@@ -134,7 +134,7 @@ Analzing the main address, the seller's account can seen receiving several trans
 
 ![cr3](/assets/posts/hacktheonsejongctf2024/cr3.png)
 
-## Tracker 1 [Forensics]
+## Tracker 3 [Forensics]
 Question: An incident occurred in which drugs were traded using cryptocurrency. Analyze the confiscated PC of the drug buyer to obtain the following information. What is the hash value of the transaction where the buyer traded drugs?
 
 Flag: `0x2485878be80df93501b8a7caa7e70b616f4c5908f1599f6f0b869ed2fbc354a4`
