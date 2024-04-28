@@ -4,11 +4,11 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-👜 ‍Recent graduate with a Bachelor’s Degree in Information Technology (Computer Networking and Security) and is currently undergoing an internship at Crowe Malaysia PLT as an IT Auditor.
+👦 Graduated with a BSc (Hons) in Information Technology (Computer Networking and Security), I have developed a huge passion in DFIR and blue team. I am currently working as a SOC L1 analyst and has previously underwent an internship as a IT auditor.
 
-👾 Developed a profound interest in the field of DFIR and blue teaming. Pwned several challenges and Sherlocks on HTB, BTLO and CyberDefenders during my free time to train my DFIR skills. Currently focusing on obtaining professional certifications like CDSA and BTL1.
+🚩 I am also very active in the CTF scene with my handle 'warlocksmurf' who plays with Team M53, Malaysia's biggest CTF community. I mainly focus on various categories like forensics, OSINT and hardware with detailed writeups on my website.
 
-🚩 Actively participates in CTFs with my friends and also a member of Malaysia's biggest CTF team, M53.
+👾 During my free time, I pwn challenges on HTB, BTLO and CyberDefenders and has consistently achieved top 10 pwner in HTB Sherlocks. Currently focusing on obtaining professional certifications like CDSA, CySA+, and eJPT to further improve my knowledge and practical skills.
 
 ## Contact Me
 
