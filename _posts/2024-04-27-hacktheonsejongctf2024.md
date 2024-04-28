@@ -93,7 +93,7 @@ The user can be seen communicating with the seller about buying drugs and transf
 ## Tracker 2 [Forensics]
 Question: An incident occurred in which drugs were traded using cryptocurrency. Analyze the confiscated PC of the drug buyer to obtain the following information. What is the main wallet address of the drug seller? (lowercase)
 
-Flag: ` 0xfc80b72fcc371ffd9e1a2c33d4d7c6c00d0658d2`
+Flag: `0xfc80b72fcc371ffd9e1a2c33d4d7c6c00d0658d2`
 
 After analyzing the AD1 image for a few hours, I found another lead in `AppData\Roaming\Windows\Recent\` where a suspicious file was run recently. Analyzing it, it seems that it was a Chrome extension.
 
