@@ -6,14 +6,14 @@ tags: [forensics,hacktheon]
 image: /assets/posts/hacktheonsejongctf2024/icon.jpg
 ---
 
-This is a writeup for all forensics challenges from Hacktheon Sejong CTF 2024. This CTF was special as I was invited by a Taiwan player to play with her team as a forensics player. Fortunately, I did not disappoint them. Sadly we did not get top 20 but it was a fun experience overall.
+This is a writeup for all forensics challenges from Hacktheon Sejong CTF 2024. I was invited by a Taiwanese player to join her team to handle forensics/misc challenges. Fortunately, I did not disappoint them as I managed to solve all the challenges easily. Shame we did not get top 20 but it was still a fun experience overall.
 
 ## Rumor 1 [Forensics]
 Question: I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What is the IP address of the mail server used by the PC to be analyzed? Ex: xxx.xxx.xxx.xxx
 
 Flag: `92.68.200.206`
 
-We are given a single event log to investigate. Analyzing its logs, it seems that the event log was `Sysmon`. Since the description mentioned something about mail server, filtering the event log with `SMTP` shows the IP address of the mail server.
+We are given a single event log to investigate. Analyzing the event log, it seems to be `Sysmon` judging by the event IDs. Since the description mentioned something about mail server, filtering the event log with `SMTP` shows the IP address of the mail server.
 
 ![one](/assets/posts/hacktheonsejongctf2024/one.png)
 
