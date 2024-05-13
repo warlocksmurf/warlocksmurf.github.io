@@ -3,7 +3,7 @@ title: Hacktheon Sejong CTF 2024 - Writeups
 time: 2024-04-27 12:00:00
 categories: [ctf]
 tags: [forensics,hacktheon]
-image: /assets/posts/hacktheonsejongctf2024/icon.jpg
+image: /assets/posts/hacktheonsejongctf2024/icon.png
 ---
 
 This is a writeup for all forensics challenges from Hacktheon Sejong CTF 2024. I was invited by a Taiwanese player to join her team to handle forensics/misc challenges. Fortunately, I did not disappoint them as I managed to solve all the challenges easily. Shame we did not get top 20 but it was still a fun experience overall.
