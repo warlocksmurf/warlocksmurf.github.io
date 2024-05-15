@@ -6,7 +6,7 @@ tags: [forensics,hacktheon]
 image: /assets/posts/hacktheonsejongctf2024/icon.png
 ---
 
-This is a writeup for all forensics challenges from Hacktheon Sejong CTF 2024. I was invited by a Taiwanese player to join her team to handle forensics/misc challenges. Fortunately, I did not disappoint them as I managed to solve all the challenges easily. Shame we did not get top 20 but it was still a fun experience overall.
+This is a writeup for all forensics challenges from Hacktheon Sejong CTF 2024. This CTF was special as I was invited by a Taiwanese player to join her team to handle forensics/misc challenges. Fortunately, I did not disappoint them as I managed to solve all the challenges easily. Shame we did not get top 20 but it was still a fun experience overall.
 
 ## Rumor 1 [Forensics]
 Question: I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What is the IP address of the mail server used by the PC to be analyzed? Ex: xxx.xxx.xxx.xxx
