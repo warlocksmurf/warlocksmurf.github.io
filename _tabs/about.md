@@ -4,8 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-👦 Graduated with a BSc (Hons) in Information Technology (Computer Networking and Security), I have developed a huge passion in DFIR and blue team. I am also very active in the CTF scene with my handle 'warlocksmurf' who plays with Team M53, Malaysia's biggest CTF community. I mainly focus on various categories like forensics, OSINT and hardware with detailed writeups on my website. During my free time, I pwn challenges on HTB, BTLO and CyberDefenders and has consistently achieved top 10 pwner in HTB Sherlocks. Currently focusing on obtaining professional certifications like CDSA, CySA+, and eJPT to further improve my knowledge and practical skills.
-
-## Contact Me
+Just a cybersecurity enthusiast passionate in DFIR and blue team. You might even know me as "warlocksmurf", a CTF player for M53 and L3ak that focuses on categories like forensics, OSINT and hardware/IoT. Currently, I am part of the cybersecurity team in MoneyLion responsible for daily operational real-time monitoring and analysis of security events from multiple sources including SIEM, XDR and WAF. During my free time, I attend local meetups and events from SherpaSec, RE:HACK, and OWASP KL to network with other professionals and chat with them about the latest trends. I also pwn challenges from HTB, CyberDefenders, and BTLO to further improve my practical skills #sherlockgang.
 
 You can reach out to me on [LinkedIn](https://www.linkedin.com/in/robbinooi/) or Discord (@warlocksmurf).
