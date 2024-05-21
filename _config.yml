@@ -16,10 +16,10 @@ timezone: Asia/Kuala_Lumpur
 
 title: warlocksmurf
 
-tagline: CTF player for M53, Forensics, OSINT and Networking enthusiast # it will display as the sub-title
+tagline: DFIR and OSINT enjoyer # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A blog about CTF writeups with a focus on forensics, OSINT and networking.
+  A blog about CTF writeups with a focus on forensics, OSINT and hardware/IoT
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
