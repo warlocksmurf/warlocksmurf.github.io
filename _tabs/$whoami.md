@@ -4,9 +4,18 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Just a Malaysian passionate in DFIR and blue team. Currently a CTF player for [M53](https://twitter.com/M53CTF) and [L3ak](https://twitter.com/l3akctf), focusing on categories like forensics, OSINT and hardware/IoT. During my free time, I attend local meetups and events from SherpaSec, RE:HACK, and OWASP KL to network with other professionals and chat with them about the latest trends. I also pwn challenges from HTB, CyberDefenders, and BTLO to further improve my technical skills #sherlockgang.
+Just a Malaysian passionate in DFIR and blue team. Currently a CTF player for [M53](https://twitter.com/M53CTF) and [L3akCTF](https://twitter.com/l3akctf) focusing on categories like forensics, OSINT and hardware/IoT. 
 
 You can reach out to me on Discord (@warlocksmurf) for further enquiries.
+
+Shoutout to my CTF friends
+- Shen ![Blog](https://chuajianshen.github.io/)
+- ren ![Blog](https://zeynarz.github.io/)
+- jigsaw ![Blog](https://zachwong02.github.io/)
+- Fedwig ![Blog](https://fedwig.pages.dev/)
+- 0x157 ![Blog](https://iloveforensics.com/)
+- Abdelrhman ![Blog](https://abdelrahme.github.io/)
+- seal.dev ![Blog](https://seall.dev/)
 
 ## Test your OSINT skills and find me in this picture!
 
