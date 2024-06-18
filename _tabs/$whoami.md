@@ -9,13 +9,13 @@ Just a Malaysian passionate in DFIR and blue team. Currently a CTF player for [M
 You can reach out to me on Discord (@warlocksmurf) for further enquiries.
 
 Shoutout to my CTF friends
-- Shen ![Blog](https://chuajianshen.github.io/)
-- ren ![Blog](https://zeynarz.github.io/)
-- jigsaw ![Blog](https://zachwong02.github.io/)
-- Fedwig ![Blog](https://fedwig.pages.dev/)
-- 0x157 ![Blog](https://iloveforensics.com/)
-- Abdelrhman ![Blog](https://abdelrahme.github.io/)
-- seal.dev ![Blog](https://seall.dev/)
+- [Shen](https://chuajianshen.github.io/)
+- [ren](https://zeynarz.github.io/)
+- [jigsaw](https://zachwong02.github.io/)
+- [Fedwig](https://fedwig.pages.dev/)
+- [0x157](https://iloveforensics.com/)
+- [Abdelrhman](https://abdelrahme.github.io/)
+- [seal.dev](https://seall.dev/)
 
 ## Test your OSINT skills and find me in this picture!
 
