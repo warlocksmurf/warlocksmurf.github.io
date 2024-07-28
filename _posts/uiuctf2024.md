@@ -1,0 +1,113 @@
+---
+title: UIUCTF 2024 - Writeups
+time: 2024-07-28 12:00:00
+categories: [ctf]
+tags: [osint,uiu]
+image: /assets/posts/imaginaryctf2024/icon.png
+---
+
+This is a writeup for all OSINT challenges from UIUCTF 2024. A very cool CTF with a cool theme, the OSINT challenges were very well made. However, there were no forensics challenges this year. Hope the organizers create some next year.
+
+## Hip With the Youth [OSINT]
+Question: The Long Island Subway Authority (LISA), in an attempt to appeal to the younger generations, has begun experimenting with social media! See if you can find a way to a flag through their Instagram. This is part one of a three-part OSINT suite including Hip With the Youth, An Unlikely Partnership, and The Weakest Link. I recommend starting here!
+
+Flag: `uiuctf{7W1773r_K!113r_321879}`
+
+The challenge mentioned that a company was using social media to advertise themselves. Using common social media websites, the company can be identified on [Instagram](https://www.instagram.com/longislandsubwayauthority/).
+
+![train1](/assets/posts/uiuctf2024/train1.png)
+
+However, none of the posts had the flag. Analyzing the Instagram profile further, a link to LISA's [Threads](https://www.threads.net/@longislandsubwayauthority?hl=en) profile can be identified. Inside it, one of the Threads posts had the flag.
+
+![train2](/assets/posts/uiuctf2024/train2.png)
+
+## An Unlikely Partnership [OSINT]
+Question: It appears that the Long Island Subway Authority (LISA) has made a strategic business partnership with a surprise influencer! See if you can figure out who. This is part two of a three-part OSINT suite including Hip With the Youth, An Unlikely Partnership, and The Weakest Link. This challenge is possible without Hip With the Youth but will be easier if you start there.
+
+Flag: `uiuctf{0M160D_U1UCCH4N_15_MY_F4V0r173_129301}`
+
+Continuing the search on LISA, a LinkedIn profile can be found on the Threads profile. 
+
+![train3](/assets/posts/uiuctf2024/train3.png)
+
+Since the challenge mentioned individuals who are related to or have worked with LISA, a suspicious user can be identified endorsing one of the company's skills.
+
+![train4](/assets/posts/uiuctf2024/train4.png)
+
+The flag can be obtained in the user's profile.
+
+![train5](/assets/posts/uiuctf2024/train5.png)
+
+## The Weakest Link [OSINT]
+Question: LISA and the secret business partner have a secret Spotify collaboration planned together. Unfortunately, neither of them have the opsec to keep it private. See if you can figure out what it is! This is part three of a three-part OSINT suite including Hip With the Youth, An Unlikely Partnership, and The Weakest Link. I recommend starting with the other two challenges!
+
+Flag: `uiuctf{7rU1Y_50N65_0F_7H3_5UMM3r_432013}`
+
+The challenge mentioned a Spotify collaboration between LISA and a user (most likely the one found from the previous challenge). Looking up UIUC Chan on [Spotify](https://open.spotify.com/user/31d2lcivqdieyl4qzx25vfmp6jt4), her profile can be identified. However, there was nothing interesting in the album other than university songs.
+
+![train6](/assets/posts/uiuctf2024/train6.png)
+
+After some trial-and-error, we managed to figure out the right method. By following UIUC Chan on Spotify, the friend activity should show a playlist being collaborated on by LISA and UIUC Chan (must use Spotify app as the web version does not show friend activity). The flag can be identified on the playlist description. 
+
+![train7](/assets/posts/uiuctf2024/train7.png)
+
+## Night [OSINT]
+Question: That was quite a pretty night view, can you find where I took it? Flag format: uiuctf{street name, city name}
+
+Flag: `uiuctf{Arlington Street, Boston}`
+
+We are given this city image to investigate.
+
+![chal](/assets/posts/uiuctf2024/chal.jpg)
+
+Doing some image reversing, it seems that the location was near Prudential Tower in Boston.
+
+![night1](/assets/posts/uiuctf2024/night1.png)
+
+After spending several minutes, the [location](https://www.google.com/maps/@42.347957,-71.0693561,3a,75y,265.3h,90.23t/data=!3m6!1e1!3m4!1sAeXv13HItMuZbXRVcJsFkg!2e0!7i16384!8i8192?coh=205409&entry=ttu) where the photo was taken can be identified according to the estimated distance and angle of the Prudential Tower. The flag was the bridge above this road.
+
+![night2](/assets/posts/uiuctf2024/night2.png)
+
+## Chunky Boi [OSINT]
+Question: Now that's a BIG plane! I wonder where it is. Flag format: uiuctf{plane type, coordinates of the aircraft}
+
+Flag: `uiuctf{Boeing C-17 Globemaster III, 47.462, -122.303}`
+
+We are given this airport image to investigate. 
+
+![chal2](/assets/posts/uiuctf2024/chal2.jpg)
+
+First, we identified the plane to be a [Boeing C-17 Globemaster III](https://www.airhistory.net/photo/605204/07-7182/77182) according to its serial number `77182`. 
+
+![plane1](/assets/posts/uiuctf2024/plane1.png)
+
+Next step was the hard part, we had to identify the coordinates of this specific aircraft. Analyzing the image for more information, the left aircraft can be identified to be an Alaska Airlines plane, suggesting that this airport might be located in Alaska.
+
+![plane2](/assets/posts/uiuctf2024/plane2.png)
+
+After spending at least 2 hours with my teammates, I was lucky enough to stumble upon this [video](https://www.youtube.com/watch?v=pGQbb43G2aQ) on Youtube that literally shows the exact airport. These were the resemblances found when watching the video.
+
+![plane3](/assets/posts/uiuctf2024/plane3.png)
+
+So the location was confirmed to be `Seattle Airport `. My teammate @0x157 then managed to pinpoint the exact [location](https://www.google.com/maps/@47.4634573,-122.3029376,3a,75y,317.29h,90.73t/data=!3m6!1e1!3m4!1svPPDX1qzDKvssshdKPKAsw!2e0!7i13312!8i6656?coh=205409&entry=ttu) of this airport with its coordinates too.
+
+## New Dallas [OSINT]
+Question: Super wide roads with trains... Is this the new Dallas? Flag format: uiuctf{coordinates of intersection between the rail and the road}
+
+Flag: `uiuctf{31.579, 120.388}`
+
+We are given this highway image to investigate.
+
+![chal3](/assets/posts/uiuctf2024/chal3.jpg)
+
+According to my teammate @0x157, the country can be identified as `Shanghai, China` using the car plates.
+
+![car1](/assets/posts/uiuctf2024/car1.png)
+
+Further investigation on the train spotted above the highway gives some potential [locations](https://rail.kychung.com/en/category/chinese-metro-rails/) such as Shanghai Metro Line 2, Wuxi Line 2, or Shenzhen. After some trial-and-error, my teammate @yqroo managed to find the exact [location](https://map.baidu.com/poi/麦德龙超市(锡山店)-北门/@13402548.285310648,3686191.774861326,19z/maptype%3DB_EARTH_MAP#panoid=09000100011704181137582217O&panotype=street&heading=337.77&pitch=-1.5&l=19&tn=B_NORMAL_MAP&sc=0&newmap=1&shareurl=1&pid=09000100011704181137582217O) of this highway on Baidu maps.
+
+![car3](/assets/posts/uiuctf2024/car3.png)
+
+After multiple attempts to pinpoint different coordinates by exploring various intersections and landmarks, the exact coordinates was identified.
+
+![car2](/assets/posts/uiuctf2024/car2.png)
