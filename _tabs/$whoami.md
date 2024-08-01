@@ -4,16 +4,18 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Just a Malaysian passionate in DFIR and blue team. Currently a CTF player for [M53](https://ctftime.org/team/211971), [L3akCTF](https://ctftime.org/team/220336/) and [RE:UN10N](https://ctftime.org/team/307413/) focusing on categories like forensics, OSINT and hardware/IoT. You can reach out to me on Discord (@warlocksmurf) for further enquiries.
+Just a Malaysian passionate in DFIR and blue team. Currently a CTF player for [L3akCTF](https://ctftime.org/team/220336/) and [M53](https://ctftime.org/team/211971), focusing on categories including forensics, OSINT, misc and hardware/IoT. You can reach out to me on Discord for further enquiries.
 
-Shoutout to my other CTF friends:
-1. [shen](https://chuajianshen.github.io/)
-1. [zeynarz](https://zeynarz.github.io/)
-1. [zachwong02](https://zachwong02.github.io/)
-1. [Fedwig](https://fedwig.pages.dev/)
-1. [0x157](https://iloveforensics.com/)
-1. [Abdelrhman](https://abdelrahme.github.io/)
-1. [seal](https://seall.dev/)
+Shoutout to my CTF friends:
+> - [0x157](https://iloveforensics.com/) [L3ak]
+> - [Abdelrhman](https://abdelrahme.github.io/) [L3ak]
+> - [seal](https://seall.dev/) [thehackerscrew/IrisSec]
+> - [Shen](https://chuajianshen.github.io/) [M53]
+> - [ren](https://zeynarz.github.io/) [M53/thehackerscrew]
+> - [jigsaw](https://zachwong02.github.io/) [M53]
+> - [Fedwig](https://fedwig.pages.dev/) [M53]
+> - [miracle0604](https://miracle0604.vercel.app/) [M53]
+> - [Zer01](https://aepulzaini.github.io/) [M53]
 
 ## Test your OSINT skills and find me in this picture!
 
