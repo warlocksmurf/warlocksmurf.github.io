@@ -6,7 +6,7 @@ tags: [forensics,cyberspace]
 image: /assets/posts/cyberspacectf2024/icon2.png
 ---
 
-This is a writeup for all forensics challenges from CyberSpace CTF 2024.
+This is a writeup for all forensics challenges from CyberSpace CTF 2024. Overall, good CTF but bad infrastructure at the start.
 
 ## Social Distancing [Forensics]
 Question: We all remember the time of social distancing and quarantines. How about some quarantined malware? Bet you can't understand what it entails!
