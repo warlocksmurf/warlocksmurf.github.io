@@ -13,7 +13,7 @@ Question: We all remember the time of social distancing and quarantines. How abo
 
 Flag: `CSCTF{y0u_un-qu4rant1n3d_my_scr1Pt!_0x91a3edff6}`
 
-We were given a Windows Defender artifact to investigate. Pretty straightforward, Windows Defender will encrypt the quarantined files using a hard coded RC4 key and place them into `C:\ProgramData\Microsoft\Windows Defender\Quarantine\ResourceData\`.
+We were given a Windows Defender artifact to investigate. Essentially, Windows Defender encrypts their quarantined files using a hard coded RC4 key and places them into `C:\ProgramData\Microsoft\Windows Defender\Quarantine\ResourceData\`.
 
 ```
 └─$ tree Quarantine    
@@ -30,7 +30,7 @@ Quarantine
 6 directories, 3 files
 ```
 
-A simple Python script was created to deecrypt the quarantined files manually.
+Hence, each quarantined file can be decrypted easily with the RC4 key.
 
 ```python
 from Crypto.Cipher import ARC4
@@ -114,7 +114,7 @@ Question: I would give you the flag but I can't let go (haha get it). use GDBrow
 
 Flag: `CSCTF{geometry_dash_d0895c120d671b}`
 
-We were given a Geometry custom level file to investigate. Reading online about this file, it seems that there was a way to decrypt the file into a readable format instead of gibberish. Using this [website](https://gdccdated.glitch.me/index.xhtml), the file was decrypted and analyzed. Several key values could be identified, but the value that stood out the most was `CSCTFa52de5` that might suggest a level name or user name.
+We were given a Geometry custom level file to investigate. Reading online about this file, it seems that there was a way to decrypt the file into a readable format using this [website](https://gdccdated.glitch.me/index.xhtml). Several key values could be identified, but the value that stood out the most was `CSCTFa52de5` that might suggest a level name or user name.
 
 ![flag2](/assets/posts/cyberspacectf2024/flag2.png)
 
@@ -474,13 +474,11 @@ Correct!
 Congratulations! Here's your flag: CSCTF{Pr0cm0n_1s_4_h3lpFul_sy5int3rn4l!_0x22defba1}
 ```
 
-### Question 1
-Question: What program produced this log file?
+### Question 1: What program produced this log file?
 
 Pretty straightforward, PML file was known as the native format for Process Monitor logs.
 
-### Question 2
-Question: How many registry keys got successfully modified by the malware?
+### Question 2: How many registry keys got successfully modified by the malware?
 
 Since the challenge mentioned cracked Adobe being the malware, the logs can be filtered with its PID `1184`. Analyzing the process tree, the malware seem to drop 2 other executables into the system and executed other processes simultaneously.
 
@@ -490,20 +488,17 @@ Filtering for successful registry operations with the PIDs of processes correlat
 
 ![flag11](/assets/posts/cyberspacectf2024/flag11.png)
 
-### Question 3
-Question: What is the MITRE ID of the persistence technique used by the malware?
+### Question 3: What is the MITRE ID of the persistence technique used by the malware?
 
 Pretty straightforward, the malware was already identified to drop 2 malicious executables into the registry run keys.
 
-### Question 4
-Question: What is the name of the file that is added to autoruns by the malware?
+### Question 4: What is the name of the file that is added to autoruns by the malware?
 
 The 2 malicious executables were dropped into the registry run keys, with only 1 of them being successfully placed.
 
 ![flag9](/assets/posts/cyberspacectf2024/flag9.png)
 
-### Question 5
-Question: Which thread ID is responsible to create the environment for malware to run?
+### Question 5: Which thread ID is responsible to create the environment for malware to run?
 
 According to the process tree, the parent process of the malware was identified to be Explorer.EXE. Analyzing the logs for registry operations from Explorer.EXE, one of the log shows a virtual desktop environment being created to most likely run the malware on it. PS: I have no idea why the log was bolded.
 
