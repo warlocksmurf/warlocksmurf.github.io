@@ -6,14 +6,14 @@ tags: [forensics,cyberspace]
 image: /assets/posts/cyberspacectf2024/icon2.png
 ---
 
-This is a writeup for all forensics challenges from CyberSpace CTF 2024. Overall, good CTF but bad infrastructure at the start.
+This is a writeup for all forensics challenges from CyberSpace CTF 2024. Overall, this CTF had several unique and fun challenges. Shame @rex did not create any forensics challenge this year, would be happy to try them next year.
 
 ## Social Distancing [Forensics]
 Question: We all remember the time of social distancing and quarantines. How about some quarantined malware? Bet you can't understand what it entails!
 
 Flag: `CSCTF{y0u_un-qu4rant1n3d_my_scr1Pt!_0x91a3edff6}`
 
-We were given a Windows Defender artifact to investigate. Essentially, Windows Defender encrypts their quarantined files using a hard coded RC4 key and places them into `C:\ProgramData\Microsoft\Windows Defender\Quarantine\ResourceData\`.
+We were given a Quarantine file from Windows Defender to investigate. Essentially, Windows Defender quarantines files by encrypting them using a hard coded RC4 key and places them into `C:\ProgramData\Microsoft\Windows Defender\Quarantine\ResourceData\`.
 
 ```
 └─$ tree Quarantine    
@@ -30,7 +30,7 @@ Quarantine
 6 directories, 3 files
 ```
 
-Hence, each quarantined file can be decrypted easily with the RC4 key.
+A Python script can be created to decrypt the quarantined files with the RC4 key.
 
 ```python
 from Crypto.Cipher import ARC4
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     main()
 ```
 
-After decryption, a base64 encoded ZIP data can be obtained. Decoding the data will output the flag too.
+After decryption, the quarantined file was a Powershell script that had a base64 encoded ZIP file. The flag can be obtained from the ZIP file.
 
 ```
 └─$ strings decrypted_file.bin         
@@ -114,11 +114,11 @@ Question: I would give you the flag but I can't let go (haha get it). use GDBrow
 
 Flag: `CSCTF{geometry_dash_d0895c120d671b}`
 
-We were given a Geometry custom level file to investigate. Reading online about this file, it seems that there was a way to decrypt the file into a readable format using this [website](https://gdccdated.glitch.me/index.xhtml). Several key values could be identified, but the value that stood out the most was `CSCTFa52de5` that might suggest a level name or user name.
+We were given a Geometry Dash level file to investigate. Researching online, it seems that the file can be decrypted into a readable format using online tools like this [website](https://gdccdated.glitch.me/index.xhtml). Several key values could be identified, with the value `CSCTFa52de5` being the odd one out.
 
 ![flag2](/assets/posts/cyberspacectf2024/flag2.png)
 
-Using GDBrowser as per instructed by the challenge author, the flag can be obtained from a comment placed by the user `CSCTFa52de5`.
+Using GDBrowser as per instructed by the author, the flag can be obtained from a comment placed by the user `CSCTFa52de5`.
 
 ![flag3](/assets/posts/cyberspacectf2024/flag3.png)
 
@@ -127,7 +127,7 @@ Question: I am sending you my secret cube. I hope you could read my secret from 
 
 Flag: `CSCTF{H1d1ng_in_T3x7ur3}`
 
-We were given a 3D object model file and a texture file to investigate. Essentially, several online 3D viewer tools can be used to view the flag on the 3D model using the given texture file. According to some users on Discord, it seems that there was another way to make the flag more visible but I had no interest in this challenge since it wasn't really considered forensics but misc.
+We were given a 3D object model and texture file to investigate. Analyzing the 3D model using the given texture file, the flag can be obtained.
 
 ![flag4](/assets/posts/cyberspacectf2024/flag4.png)
 
@@ -136,17 +136,19 @@ Question: Our SOC says that there seems to be some curious activities within one
 
 Flag: `CSCTF{chang3_y0ur_variab13s_b3for3_d3pl0ying}`
 
-We were given a PCAP file to investigate. A huge chunk of HTML code can be identified being fetched from a server, however, it was just Google's front page.
+We were given a PCAP file to investigate. Analyzing the packets, a huge chunk of HTML code can be identified being fetched from the server with the Server header value being `IIS`.
 
 ![flag5](/assets/posts/cyberspacectf2024/flag5.png)
 
+However, it was just Google's front page.
+
 ![flag6](/assets/posts/cyberspacectf2024/flag6.png)
 
-Analyzing the packets again, a set of GET requests can be identified to be fetching base64 encoded images from the server. This was pretty suspicious since the image GUID should usually not be base64 encoded.
+Going through the packets again, several GET requests to `/images` with base64 encoded parameters in the URL can be identified being fetched from the server.
 
 ![flag7](/assets/posts/cyberspacectf2024/flag7.png)
 
-According to this [blog](https://nasbench.medium.com/understanding-detecting-c2-frameworks-trevorc2-2a9ce6f1f425), the traffic was identified to be communication between the attacker and TrevorC2 since the C2 uses `/images` by default for the URIs. Using a [script](https://github.com/Abdelrahme/Trevorc2_decrypt/blob/main/trevorc2_decrypt.py) made by my teammate @Abdelrhman, the base64 encoded URI strings captured from TrevorC2 can be decrypted and analyzed.
+At this point, the traffic was easily identified to be [TrevorC2](https://nasbench.medium.com/understanding-detecting-c2-frameworks-trevorc2-2a9ce6f1f425) communication. Using a Python script made by my teammate [@Abdelrhman](https://github.com/Abdelrahme/Trevorc2_decrypt/blob/main/trevorc2_decrypt.py), the base64 encoded parameters captured can be decrypted and analyzed.
 
 ```python
 #!/usr/bin/env python
@@ -304,7 +306,7 @@ Question: I left the image of the flag in the desktop but somehow it disappeared
 
 Flag: `csctf{p0w3r$h3ll_$@v3d_3v3ry7h1ng_1n_3nv@r$!_Congr@tul@t10n$!}`
 
-We were given a memory dump to investigate. The challenge mentioned the flag being placed in the Desktop, however, it seems that it could not be located with filescan.
+We were given a memory dump to investigate. The challenge mentioned the flag image being placed in the Desktop, however, it couldn't be located via filescan.
 
 ```
 └─$ vol -f mem.dmp windows.filescan | grep -i Desktop      
@@ -360,7 +362,7 @@ We were given a memory dump to investigate. The challenge mentioned the flag bei
 0xe50764f26400  \Users\gg\Desktop\x64\DESKTOP-5LBRLH1-20240826-200814.dmp
 ```
 
-There was a note.txt file located in Desktop, but it was just a fake flag (can't be dumped but can be analyzed with mftparser).
+A note.txt file can be identified in the Desktop, but it was just a fake flag (can't be dumped but can be analyzed with mftparser).
 
 ```
 MFT entry found at offset 0x7208dc00
@@ -391,7 +393,7 @@ $DATA
 0000000020: 65 61 6c 6c 6c 79 5f 74 68 65 5f 66 6c 61 67 7d   eallly_the_flag}
 ```
 
-Searching for information about the flag image with strings and grep, part of a Powershell script can be identified. It seems that the encrypted data, key, and IV was stored in environment variables after encrypting the flag with AES.
+Searching for information about the flag image with strings and grep, part of a Powershell script can be identified. The script seem to store the encoded data, key, and IV in environment variables after encrypting the flag with AES.
 
 ```powershell
 $ifPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), 'flag.jpg')
@@ -415,7 +417,7 @@ if (Test-Path $ifPath) {
     Remove-Item $ifPath -Force
 ```
 
-The envar plugin can be utilised to retrieve them from environment variables to obtain the flag.
+One easy method to retrieve environment variables was to utilise the envar plugin from Volatility. The flag can be obtained after decrypting the image with the respective key and IV.
 
 ```
 └─$ vol -f mem.dmp windows.envar | grep -iE "ENCD|ENCK|ENCV"
@@ -476,30 +478,30 @@ Congratulations! Here's your flag: CSCTF{Pr0cm0n_1s_4_h3lpFul_sy5int3rn4l!_0x22d
 
 ### Question 1: What program produced this log file?
 
-Pretty straightforward, PML file was known as the native format for Process Monitor logs.
+Pretty straightforward, PML file was known to be the native format for Process Monitor logs.
 
 ### Question 2: How many registry keys got successfully modified by the malware?
 
-Since the challenge mentioned cracked Adobe being the malware, the logs can be filtered with its PID `1184`. Analyzing the process tree, the malware seem to drop 2 other executables into the system and executed other processes simultaneously.
+Since the challenge mentioned cracked Adobe, the logs can be filtered with the PID of `adobe.exe`. Analyzing the process tree, the malware can be seen dropping 2 other malicious executables into the system while executing other processes simultaneously.
 
 ![flag10](/assets/posts/cyberspacectf2024/flag10.png)
 
-Filtering for successful registry operations with the PIDs of processes correlating to the malware, the amount of registry changes can be identified to be 13.
+Filtering for successful registry operations with the PIDs of processes correlating to the malware, the amount of registry changes can be identified.
 
 ![flag11](/assets/posts/cyberspacectf2024/flag11.png)
 
 ### Question 3: What is the MITRE ID of the persistence technique used by the malware?
 
-Pretty straightforward, the malware was already identified to drop 2 malicious executables into the registry run keys.
+The malware was already identified to drop 2 malicious executables into the registry run keys.
 
 ### Question 4: What is the name of the file that is added to autoruns by the malware?
 
-The 2 malicious executables were dropped into the registry run keys, with only 1 of them being successfully placed.
+Only 1 of the dropped malicious executables managed to be dropped successfully.
 
 ![flag9](/assets/posts/cyberspacectf2024/flag9.png)
 
 ### Question 5: Which thread ID is responsible to create the environment for malware to run?
 
-According to the process tree, the parent process of the malware was identified to be Explorer.EXE. Analyzing the logs for registry operations from Explorer.EXE, one of the log shows a virtual desktop environment being created to most likely run the malware on it. PS: I have no idea why the log was bolded.
+According to the process tree, the parent process of the malware can be identified to be Explorer.EXE. Analyzing the registry operations from Explorer.EXE, one of the log shows a virtual desktop environment being created to most likely run the malware on it. PS: I have no idea why the log was bolded.
 
 ![flag12](/assets/posts/cyberspacectf2024/flag12.png)
