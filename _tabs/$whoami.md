@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Just a Malaysian passionate in DFIR and blue team. Currently a CTF player for [L3akCTF](https://ctftime.org/team/220336/) and [M53](https://ctftime.org/team/211971), focusing on forensics, OSINT, misc and blockchain.
+Just a Malaysian passionate in DFIR and blue team. Currently a CTF player for [L3ak](https://ctftime.org/team/220336/) and [M53](https://ctftime.org/team/211971), focusing on forensics, OSINT, misc and blockchain.
 
 Reach out to me on [Discord](https://discord.com/users/249479519331811330) or [email](mailto:warlocksmurf@proton.me) for further enquiries.
 
