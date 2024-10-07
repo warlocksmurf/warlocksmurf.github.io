@@ -15,6 +15,7 @@ Shoutout to my friends:
 > - [0x0ne](https://oneonlyzero.github.io/) [M53]
 > - [0x157](https://iloveforensics.com/) [L3ak]
 > - [Abdelrhman](https://abdelrahme.github.io/) [L3ak]
+> - [Vivi's_Ghost](https://github.com/dbissell6) [L3ak]
 > - [ren](https://zeynarz.github.io/) [thehackerscrew]
 > - [seal.dev](https://seall.dev/) [thehackerscrew]
 > - [Odin](https://odintheprotector.github.io/) [World Wide Flags]
