@@ -1,7 +1,7 @@
 ---
 title: Hacktheon Sejong CTF 2024 - Writeups
 time: 2024-04-27 12:00:00
-categories: [ctf,hacktheon]
+categories: [ctf,online]
 tags: [forensics]
 image: /assets/posts/hacktheonsejongctf2024/icon.jpg
 ---

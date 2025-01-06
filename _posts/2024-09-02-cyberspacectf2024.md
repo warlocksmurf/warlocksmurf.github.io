@@ -1,7 +1,7 @@
 ---
 title: CyberSpace CTF 2024 - Writeups
 time: 2024-09-02 12:00:00
-categories: [ctf,cyberspace]
+categories: [ctf,online]
 tags: [forensics]
 image: /assets/posts/cyberspacectf2024/icon2.png
 ---
