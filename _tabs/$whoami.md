@@ -95,7 +95,7 @@ This blog is mainly to showcase CTF writeups and malware research that I've enco
       </td>
       <td align="center">
         <img src="/assets/img/friends/jesuscries.png" width="80"><br>
-        <a href="http://jesuscries.gitbook.io/">JesusCries</a>
+        <a href="https://jesuscries.gitbook.io/">JesusCries</a>
       </td>
       <td align="center">
         <img src="/assets/img/friends/pikaroot.jpg" width="80"><br>
