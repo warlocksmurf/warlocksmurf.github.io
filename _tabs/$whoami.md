@@ -5,11 +5,7 @@ order: 4
 ---
 
 ## About Me
-Just an ordinary blue lobster working as a cybersecurity analyst who specializes in DFIR, threat hunting and threat intelligence. During my weekends, I'm an active CTF player with [L3ak](https://ctftime.org/team/220336/) and [M53](https://ctftime.org/team/211971), focusing on forensics, OSINT and reverse engineering challenges. Other than that, I spend my free time playing gacha games and learning malware analysis and blockchain security for fun.
-
-This blog is mainly to showcase CTF writeups and malware research that I've encountered during work. Reach out to me on [Discord](https://discord.com/users/249479519331811330) for further enquiries.
-
-![ascii-art](/assets/img/ascii-art.png)
+Hey, just an ordinary blue lobster playing CTFs with [L3ak](https://ctftime.org/team/220336/) and [M53](https://ctftime.org/team/211971), focusing on forensics, OSINT and reverse engineering challenges. I'm also a writeup enthusiast where I managed to win at least 3 writeups in 2024. Reach out to me on [Discord](https://discord.com/users/249479519331811330) for further enquiries.
 
 ## Check out these amazing nerds as well
 <div align="left">
