@@ -30,7 +30,7 @@
   
     console.log("%c[ You have been pwned ]", "color: red; font-weight: bold; font-size: 16px;");
     console.log("Flag 2: %c" + uniqueID, "color: yellow; font-weight: bold;");
-    console.log("Looking for the first part? Maybe you should check your code ( •̀ᴗ•́ )و ̑̑", "color: yellow; font-weight: bold;");
+    console.log("Looking for the first flag part? Maybe you should check your code ( •̀ᴗ•́ )");
     console.log(petyaArt);
   })();
   
